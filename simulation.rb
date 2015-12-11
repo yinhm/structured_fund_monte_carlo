@@ -1,3 +1,5 @@
+#!/usr/bin/env ruby
+# -*- coding: utf-8 -*-
 require 'active_support'
 require 'active_support/core_ext'
 require 'rubystats'
@@ -63,6 +65,7 @@ class Simulation
   def stock_index_movement
     dist = Rubystats::NormalDistribution.new(daily_rm, daily_v)
     delta = dist.rng.round(4)
+    # puts "rm #{daily_rm.round(4)}\t v #{daily_v.round(4)} \t delta #{delta.round(4)}"
     @index_val = (@index_val * (1 + delta)).round(2)
     old_m_nav = @m_nav
     @m_nav = (@m_nav * (1 + delta)).round(4)
